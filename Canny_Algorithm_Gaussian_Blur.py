@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 
+# алгоритм Канни без пороговой фильтрации
+
 # реализация операции свёртки
 def Convolution(img, kernel):
     kernel_size = len(kernel)
@@ -58,14 +60,14 @@ def get_angle_number(x, y):
 
 
 i = 0
-def main(path, standard_deviation, kernel_size, bound_path):
+def main(path, standard_deviation, kernel_size):
     global i
     i += 1
 
     # Задание 1 - чтение строки полного адреса изображения и размытие Гаусса
     img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
     imgBlur_CV2 = cv2.GaussianBlur(img, (kernel_size, kernel_size), standard_deviation)
-    #cv2.imshow('Blur_Imagine', imgBlur_CV2)
+    # cv2.imshow('Blur_Imagine', imgBlur_CV2)
 
     # Задание 2 - вычисление и вывод матрицы значений длин и матрицы значений углов градиентов
     # задание матриц оператора Собеля
@@ -163,41 +165,43 @@ def main(path, standard_deviation, kernel_size, bound_path):
                 # проверка является ли пиксель максимальным значение градиента
                 is_max = gradient >= matr_gradient[i + y_shift][j + x_shift] and gradient >= matr_gradient[i - y_shift][ j - x_shift]
                 img_border[i][j] = 255 if is_max else 0
-    #cv2.imshow('img_border ' + str(i), img_border)
+    cv2.imshow('img_border ' + str(i), img_border)
+    # запись в файл
+    cv2.imwrite('result_picture/res_test3_3.jpg',img_border)
 
-    # Задание 4 - двойная пороговая фильтрация
-    # задание пороговых границ для градиента
-    lower_bound = max_gradient / bound_path
-    upper_bound = max_gradient - max_gradient / bound_path
-    # инициализация массива результата
-    double_filtration = np.zeros(img.shape)
-    for i in range(img.shape[0]):
-        for j in range(img.shape[1]):
-            gradient = matr_gradient[i][j]
-            # проверка находится ли пиксель на границы изображения
-            if (img_border[i][j] == 255):
-                # проверка градиента в диапазоне
-                if (gradient >= lower_bound and gradient <= upper_bound):
-                    flag = False
-                    # проверка пикселя с максимальной длиной градиента среди соседей
-                    for k in range(-1, 2):
-                        for l in range(-1, 2):
-                            if (flag):
-                                break
-                            # поиск границы
-                            if (img_border[i + k][j + l] == 255 and matr_gradient[i + k][j + l] >= lower_bound):
-                                flag = True
-                                break
-                    if (flag):
-                        double_filtration[i][j] = 255
-                # если значение градиента выше - верхней границы, то пиксель точно граница
-                elif (gradient > upper_bound):
-                    double_filtration[i][j] = 255
-    cv2.imshow('Double_filtration ' + str(i), double_filtration)
+    # # Задание 4 - двойная пороговая фильтрация
+    # # задание пороговых границ для градиента
+    # lower_bound = max_gradient / bound_path
+    # upper_bound = max_gradient - max_gradient / bound_path
+    # # инициализация массива результата
+    # double_filtration = np.zeros(img.shape)
+    # for i in range(img.shape[0]):
+    #     for j in range(img.shape[1]):
+    #         gradient = matr_gradient[i][j]
+    #         # проверка находится ли пиксель на границы изображения
+    #         if (img_border[i][j] == 255):
+    #             # проверка градиента в диапазоне
+    #             if (gradient >= lower_bound and gradient <= upper_bound):
+    #                 flag = False
+    #                 # проверка пикселя с максимальной длиной градиента среди соседей
+    #                 for k in range(-1, 2):
+    #                     for l in range(-1, 2):
+    #                         if (flag):
+    #                             break
+    #                         # поиск границы
+    #                         if (img_border[i + k][j + l] == 255 and matr_gradient[i + k][j + l] >= lower_bound):
+    #                             flag = True
+    #                             break
+    #                 if (flag):
+    #                     double_filtration[i][j] = 255
+    #             # если значение градиента выше - верхней границы, то пиксель точно граница
+    #             elif (gradient > upper_bound):
+    #                 double_filtration[i][j] = 255
+    # cv2.imshow('Double_filtration ' + str(i), double_filtration)
 
     cv2.waitKey(0)
 
 
-#main('test1.jpg',3,3, 3)
-main('dataset/test1.jpg', 6, 5, 10)
-#main('pic2_small.jpg', 100, 9, 15)
+# main('dataset/test3.jpg', 5, 5)
+# main('dataset/test3.jpg', 6, 9)
+# main('dataset/test3.jpg', 90, 5)
