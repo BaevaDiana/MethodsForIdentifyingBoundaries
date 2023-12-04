@@ -69,27 +69,16 @@ def main(path, standard_deviation, kernel_size, bound_path):
 
     # Задание 2 - вычисление и вывод матрицы значений длин и матрицы значений углов градиентов
     # задание матриц оператора Собеля
-    Gx = [[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]]
-    Gy = [[-1, -2, -1], [0, 0, 0], [1, 2, 1]]
+    # Gx = [[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]]
+    # Gy = [[-1, -2, -1], [0, 0, 0], [1, 2, 1]]
 
+    # задание матрицы оператора Прюитта
+    Gx = [[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]]
+    Gy = [[-1, -1, -1], [0, 0, 0], [1, 1, 1]]
 
-    #Оператор Прюитта
-    # Gx = [[-1, 0, 1],
-    #       [-1, 0, 1],
-    #       [-1, 0, 1]]
-    #
-    # Gy = [[-1, -1, -1],
-    #       [0, 0, 0],
-    #       [1, 1, 1]]
-
-    # Оператор Щарра:
-    # Gx = [[-3, 0, 3],
-    #      [-10, 0, 10],
-    #      [-3, 0, 3]]
-    #
-    # Gy = [[-3, -10, -3],
-    #      [0,   0,  0],
-    #      [3,  10,  3]]
+    # Оператор Щарра
+    Gx = [[-3, 0, 3], [-10, 0, 10], [-3, 0, 3]]
+    Gy = [[-3, -10, -3], [0,   0,  0], [3,  10,  3]]
 
     # применение операции свёртки
     img_Gx = Convolution(img, Gx)
@@ -194,10 +183,49 @@ def main(path, standard_deviation, kernel_size, bound_path):
                 elif (gradient > upper_bound):
                     double_filtration[i][j] = 255
     cv2.imshow('Double_filtration ' + str(i), double_filtration)
+    # запись в файл
+    cv2.imwrite('result_picture/shaara_test1_9.jpg', double_filtration)
 
     cv2.waitKey(0)
 
+# Оператор Собеля
 
-#main('test1.jpg',3,3, 3)
-main('dataset/test1.jpg', 6, 5, 10)
-#main('pic2_small.jpg', 100, 9, 15)
+# main('dataset/test1.jpg',5,15, 3)
+# main('dataset/test1.jpg',5,15, 7)
+# main('dataset/test1.jpg',5,15, 9)
+
+# main('dataset/test1.jpg',10, 5, 3)
+# main('dataset/test1.jpg',10, 5, 7)
+# main('dataset/test1.jpg',10, 5, 9)
+
+# main('dataset/test1.jpg',200, 7, 3)
+# main('dataset/test1.jpg',200, 7, 7)
+# main('dataset/test1.jpg',200, 7, 9)
+
+# Оператор Прюитт
+
+# main('dataset/test1.jpg',5,15, 3)
+# main('dataset/test1.jpg',5,15, 7)
+# main('dataset/test1.jpg',5,15, 9)
+
+# main('dataset/test1.jpg',10, 5, 3)
+# main('dataset/test1.jpg',10, 5, 7)
+# main('dataset/test1.jpg',10, 5, 9)
+
+# main('dataset/test1.jpg',200, 7, 3)
+# main('dataset/test1.jpg',200, 7, 7)
+# main('dataset/test1.jpg',200, 7, 9)
+
+# Оператор Щарра
+
+# main('dataset/test1.jpg',5,15, 3)
+# main('dataset/test1.jpg',5,15, 7)
+# main('dataset/test1.jpg',5,15, 9)
+
+# main('dataset/test1.jpg',10, 5, 3)
+# main('dataset/test1.jpg',10, 5, 7)
+# main('dataset/test1.jpg',10, 5, 9)
+
+# main('dataset/test1.jpg',200, 7, 3)
+# main('dataset/test1.jpg',200, 7, 7)
+# main('dataset/test1.jpg',200, 7, 9)
