@@ -73,10 +73,10 @@ def main(path, standard_deviation, kernel_size, bound_path):
     # Gy = [[-1, -2, -1], [0, 0, 0], [1, 2, 1]]
 
     # задание матрицы оператора Прюитта
-    Gx = [[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]]
-    Gy = [[-1, -1, -1], [0, 0, 0], [1, 1, 1]]
+    # Gx = [[-1, 0, 1], [-1, 0, 1], [-1, 0, 1]]
+    # Gy = [[-1, -1, -1], [0, 0, 0], [1, 1, 1]]
 
-    # Оператор Щарра
+    # задание матрицы оператора Щарра
     Gx = [[-3, 0, 3], [-10, 0, 10], [-3, 0, 3]]
     Gy = [[-3, -10, -3], [0,   0,  0], [3,  10,  3]]
 
@@ -184,48 +184,48 @@ def main(path, standard_deviation, kernel_size, bound_path):
                     double_filtration[i][j] = 255
     cv2.imshow('Double_filtration ' + str(i), double_filtration)
     # запись в файл
-    cv2.imwrite('result_picture/shaara_test1_9.jpg', double_filtration)
+    cv2.imwrite('result_pictures/shaara_test2_9.jpg', double_filtration)
 
     cv2.waitKey(0)
 
 # Оператор Собеля
 
-# main('dataset/test1.jpg',5,15, 3)
-# main('dataset/test1.jpg',5,15, 7)
-# main('dataset/test1.jpg',5,15, 9)
+# main('dataset/test2.jpg',7, 19, 3)
+# main('dataset/test2.jpg',7, 19, 7)
+# main('dataset/test2.jpg',7, 19, 9)
 
-# main('dataset/test1.jpg',10, 5, 3)
-# main('dataset/test1.jpg',10, 5, 7)
-# main('dataset/test1.jpg',10, 5, 9)
+# main('dataset/test2.jpg',15, 5, 3)
+# main('dataset/test2.jpg',15, 5, 7)
+# main('dataset/test2.jpg',15, 5, 9)
 
-# main('dataset/test1.jpg',200, 7, 3)
-# main('dataset/test1.jpg',200, 7, 7)
-# main('dataset/test1.jpg',200, 7, 9)
+# main('dataset/test2.jpg',150, 9, 3)
+# main('dataset/test2.jpg',150, 9, 7)
+# main('dataset/test2.jpg',150, 9, 9)
 
 # Оператор Прюитт
 
-# main('dataset/test1.jpg',5,15, 3)
-# main('dataset/test1.jpg',5,15, 7)
-# main('dataset/test1.jpg',5,15, 9)
+# main('dataset/test2.jpg',7, 19, 3)
+# main('dataset/test2.jpg',7, 19, 7)
+# main('dataset/test2.jpg',7, 19, 9)
 
-# main('dataset/test1.jpg',10, 5, 3)
-# main('dataset/test1.jpg',10, 5, 7)
-# main('dataset/test1.jpg',10, 5, 9)
+# main('dataset/test2.jpg',15, 5, 3)
+# main('dataset/test2.jpg',15, 5, 7)
+# main('dataset/test2.jpg',15, 5, 9)
 
-# main('dataset/test1.jpg',200, 7, 3)
-# main('dataset/test1.jpg',200, 7, 7)
-# main('dataset/test1.jpg',200, 7, 9)
+# main('dataset/test2.jpg',150, 9, 3)
+# main('dataset/test2.jpg',150, 9, 7)
+# main('dataset/test2.jpg',150, 9, 9)
 
 # Оператор Щарра
 
-# main('dataset/test1.jpg',5,15, 3)
-# main('dataset/test1.jpg',5,15, 7)
-# main('dataset/test1.jpg',5,15, 9)
+# main('dataset/test2.jpg',7, 19, 3)
+# main('dataset/test2.jpg',7, 19, 7)
+# main('dataset/test2.jpg',7, 19, 9)
 
-# main('dataset/test1.jpg',10, 5, 3)
-# main('dataset/test1.jpg',10, 5, 7)
-# main('dataset/test1.jpg',10, 5, 9)
+# main('dataset/test2.jpg',15, 5, 3)
+# main('dataset/test2.jpg',15, 5, 7)
+# main('dataset/test2.jpg',15, 5, 9)
 
-# main('dataset/test1.jpg',200, 7, 3)
-# main('dataset/test1.jpg',200, 7, 7)
-# main('dataset/test1.jpg',200, 7, 9)
+# main('dataset/test2.jpg',150, 9, 3)
+# main('dataset/test2.jpg',150, 9, 7)
+# main('dataset/test2.jpg',150, 9, 9)
