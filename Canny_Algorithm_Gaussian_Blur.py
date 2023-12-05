@@ -201,7 +201,6 @@ def main(path, standard_deviation, kernel_size):
 
     cv2.waitKey(0)
 
-
 # main('dataset/test5.jpg', 5, 5)
 # main('dataset/test5.jpg', 10, 5)
 # main('dataset/test5.jpg', 200, 7)
