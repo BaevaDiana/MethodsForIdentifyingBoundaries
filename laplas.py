@@ -46,7 +46,7 @@ def laplassian_method(path,num, standard_deviation, kernel_size, bound):
                 img_border[i][j] = 0
 
     # cv2.imshow(f'laplas_dev{standard_deviation}_ker{kernel_size}_bound-{bound}.jpg', img_border)
-    cv2.imwrite(f'result_picture/laplas/test{num}_dev{standard_deviation}_ker{kernel_size}_bound-{bound}.jpg',img_border)
+    cv2.imwrite(f'result_pictures/laplas/test{num}_dev{standard_deviation}_ker{kernel_size}_bound-{bound}.jpg',img_border)
 
 
 
