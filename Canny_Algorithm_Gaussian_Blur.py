@@ -167,7 +167,7 @@ def main(path, standard_deviation, kernel_size):
                 img_border[i][j] = 255 if is_max else 0
     cv2.imshow('img_border ' + str(i), img_border)
     # запись в файл
-    cv2.imwrite('result_pictures/res_test3_2 .jpg', img_border)
+    cv2.imwrite('result_pictures/res_test5_3.jpg', img_border)
 
     # # Задание 4 - двойная пороговая фильтрация
     # # задание пороговых границ для градиента
@@ -202,7 +202,7 @@ def main(path, standard_deviation, kernel_size):
     cv2.waitKey(0)
 
 
-# main('dataset/test1.jpg', 5, 5)
-# main('dataset/test1.jpg', 10, 5)
-# main('dataset/test1.jpg', 200, 7)
+# main('dataset/test5.jpg', 5, 5)
+# main('dataset/test5.jpg', 10, 5)
+# main('dataset/test5.jpg', 200, 7)
 

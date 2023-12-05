@@ -184,48 +184,54 @@ def main(path, standard_deviation, kernel_size, bound_path):
                     double_filtration[i][j] = 255
     cv2.imshow('Double_filtration ' + str(i), double_filtration)
     # запись в файл
-    cv2.imwrite('result_pictures/shaara_test3_9.jpg', double_filtration)
+    cv2.imwrite('result_pictures/shaara_test5_9.jpg', double_filtration)
 
     cv2.waitKey(0)
 
-# Оператор Собеля
-
-# main('dataset/test3.jpg',5, 5, 3)
-# main('dataset/test3.jpg',5, 5, 7)
-# main('dataset/test3.jpg',5, 5, 9)
-
-# main('dataset/test3.jpg',10, 5, 3)
-# main('dataset/test3.jpg',10, 5, 7)
-# main('dataset/test3.jpg',10, 5, 9)
-
-# main('dataset/test3.jpg',200, 7, 3)
-# main('dataset/test3.jpg',200, 7, 7)
-# main('dataset/test3.jpg',200, 7, 9)
-
-# Оператор Прюитт
-
-# main('dataset/test3.jpg',5, 5, 3)
-# main('dataset/test3.jpg',5, 5, 7)
-# main('dataset/test3.jpg',5, 5, 9)
-
-# main('dataset/test3.jpg',10, 5, 3)
-# main('dataset/test3.jpg',10, 5, 7)
-# main('dataset/test3.jpg',10, 5, 9)
-
-# main('dataset/test3.jpg',200, 7, 3)
-# main('dataset/test3.jpg',200, 7, 7)
-# main('dataset/test3.jpg',200, 7, 9)
 
 # Оператор Щарра
 
-# main('dataset/test3.jpg',5, 5, 3)
-# main('dataset/test3.jpg',5, 5, 7)
-# main('dataset/test3.jpg',5, 5, 9)
+# main('dataset/test5.jpg',5, 5, 3)
+# main('dataset/test5.jpg',5, 5, 7)
+# main('dataset/test5.jpg',5, 5, 9)
 
-# main('dataset/test3.jpg',10, 5, 3)
-# main('dataset/test3.jpg',10, 5, 7)
-# main('dataset/test3.jpg',10, 5, 9)
+# main('dataset/test5.jpg',10, 5, 3)
+# main('dataset/test5.jpg',10, 5, 7)
+# main('dataset/test5.jpg',10, 5, 9)
 
-# main('dataset/test3.jpg',200, 7, 3)
-# main('dataset/test3.jpg',200, 7, 7)
-# main('dataset/test3.jpg',200, 7, 9)
+# main('dataset/test5.jpg',200, 7, 3)
+# main('dataset/test5.jpg',200, 7, 7)
+main('dataset/test5.jpg',200, 7, 9)
+
+
+# Оператор Прюитт
+
+# main('dataset/test5.jpg',5, 5, 3)
+# main('dataset/test5.jpg',5, 5, 7)
+# main('dataset/test5.jpg',5, 5, 9)
+
+# main('dataset/test5.jpg',10, 5, 3)
+# main('dataset/test5.jpg',10, 5, 7)
+# main('dataset/test5.jpg',10, 5, 9)
+
+# main('dataset/test5.jpg',200, 7, 3)
+# main('dataset/test5.jpg',200, 7, 7)
+# main('dataset/test5.jpg',200, 7, 9)
+
+
+# Оператор Собеля
+
+# main('dataset/test5.jpg',5, 5, 3)
+# main('dataset/test5.jpg',5, 5, 7)
+# main('dataset/test5.jpg',5, 5, 9)
+
+# main('dataset/test5.jpg',10, 5, 3)
+# main('dataset/test5.jpg',10, 5, 7)
+# main('dataset/test5.jpg',10, 5, 9)
+
+# main('dataset/test5.jpg',200, 7, 3)
+# main('dataset/test5.jpg',200, 7, 7)
+# main('dataset/test5.jpg',200, 7, 9)
+
+
+
