@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import time
 
 # реализация операции свёртки
 def Convolution(img, kernel):
@@ -21,6 +22,13 @@ def Convolution(img, kernel):
                     val += img[i + k][j + l] * kernel[k +(kernel_size//2)][l + (kernel_size//2)]
             matr[i][j] = val
     return matr
+def evaluate_contrast(image):
+    # Рассчитываем контраст (например, стандартное отклонение значений пикселей)
+    contrast_value = np.std(image)
+
+    # Вывод результата
+    print(f"Контраст изображения: {contrast_value:.2f}")
+
 
 # нахождение округления угла между вектором градиента и осью Х
 def get_angle_number(x, y):
@@ -59,6 +67,7 @@ def get_angle_number(x, y):
 
 i = 0
 def main(path, standard_deviation, kernel_size, bound_path):
+    start_time=time.time()
     global i
     i += 1
 
@@ -182,7 +191,14 @@ def main(path, standard_deviation, kernel_size, bound_path):
                 # если значение градиента выше - верхней границы, то пиксель точно граница
                 elif (gradient > upper_bound):
                     double_filtration[i][j] = 255
+
+    end_time = time.time()
+    execution_time = end_time - start_time
+    print(f"Время выполнения алгоритма: {execution_time:.4f} секунд")
+    evaluate_contrast(double_filtration)
+
     cv2.imshow('Double_filtration ' + str(i), double_filtration)
+
     # запись в файл
     cv2.imwrite('result_pictures/shaara_test5_9.jpg', double_filtration)
 
