@@ -3,19 +3,22 @@ import numpy as np
 import time
 
 def convolution(img, kernel):
+    # Размер ядра свертки
     kernel_size = len(kernel)
-    # начальные координаты для итераций по пикселям
+    # Начальные координаты для итераций по пикселям
     x_start = kernel_size // 2
     y_start = kernel_size // 2
-    # переопределение матрицы изображения для работы с каждым внутренним пикселем
+    # Переопределение матрицы изображения для работы с каждым внутренним пикселем
     matr = np.zeros(img.shape)
     for i in range(img.shape[0]):
         for j in range(img.shape[1]):
             matr[i][j] = img[i][j]
 
+    # Итерации по внутренним пикселям для операции свертки
     for i in range(x_start, len(matr) - x_start):
         for j in range(y_start, len(matr[i]) - y_start):
-            # операция свёртки - каждый пиксель умножается на соответствующий элемент ядра свертки, а затем все произведения суммируются
+            # Операция свёртки - каждый пиксель умножается на соответствующий элемент ядра свертки,
+            # а затем все произведения суммируются
             val = 0
             for k in range(-(kernel_size // 2), kernel_size // 2 + 1):
                 for l in range(-(kernel_size // 2), kernel_size // 2 + 1):
@@ -23,21 +26,27 @@ def convolution(img, kernel):
             matr[i][j] = val
     return matr
 
-def laplassian_method(path,num, standard_deviation, kernel_size, bound):
-    start_time=time.time()
+def laplassian_method(path, num, standard_deviation, kernel_size, bound):
+    start_time = time.time()
+    # Загрузка изображения в оттенках серого
     img = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
+    # Применение гауссовского размытия
     imgBlur_CV2 = cv2.GaussianBlur(img, (kernel_size, kernel_size), standard_deviation)
 
+    # Ядро для фильтра Лапласа
     laplas_filter = [[-1, -1, -1],
                      [-1, 8, -1],
                      [-1, -1, -1]]
 
-    # laplas_filter = [[0, 1, 0], [1, -4, 1], [0, 1, 0]]
+    #Применение фильтра Лапласа с использованием функции свертки
     laplassian_img = convolution(imgBlur_CV2, laplas_filter)
+    #преобразовать все значения в положительные, потому что после операции свертки значения могут быть как положительными, так и отрицательными.
     laplassian_img = np.absolute(laplassian_img)
+    #находим макс значение
     max_diff = np.max(laplassian_img)
-    laplassian_img /= max_diff # нормируем
+    laplassian_img /= max_diff  # Нормировка значений-приведения интенсивности пикселей к определенному диапазону, часто от 0 до 1
 
+    # Применение порогового значения для выделения границ
     img_border = np.zeros(img.shape)
     for i in range(img.shape[0]):
         for j in range(img.shape[1]):
@@ -50,27 +59,22 @@ def laplassian_method(path,num, standard_deviation, kernel_size, bound):
     execution_time = end_time - start_time
     print(f"Время выполнения алгоритма для изображения {num}: {execution_time:.4f} секунд")
 
+    # Оценка контраста изображения
     contrast_value = np.std(img_border)
     print(f"Контраст изображения {num}: {contrast_value:.2f}")
 
-    # cv2.imshow(f'laplas_dev{standard_deviation}_ker{kernel_size}_bound-{bound}.jpg', img_border)
-    cv2.imwrite(f'result_pictures/laplas/test{num}_dev{standard_deviation}_ker{kernel_size}_bound-{bound}.jpg',img_border)
+    # Сохранение обработанного изображения в файл
+    cv2.imwrite(f'result_pictures/laplas/test{num}_dev{standard_deviation}_ker{kernel_size}_bound-{bound}.jpg', img_border)
 
+# Набор значений для экспериментов
+stand = [5, 10, 100]
+ker = [3, 5, 9]
+lower = [[0.1, 0.7], [0.3, 0.8], [0.4, 0.9]]
 
+# Вызов функции для одного изображения с заданными параметрами
+laplassian_method('dataset/test1.jpg', 1, 5, 5, [0.1, 0.7])
 
-stand = [5,10,100]
-ker = [3,5,9]
-lower = [[0.1,0.7],[0.3,0.8],[0.4,0.9]]
-
-# for i in stand:
-#     for j in ker:
-#         for l in lower:
-            # laplassian_method('dataset/test1.jpg',1, i, j, l)
-            # laplassian_method('dataset/test2.jpg',2, i, j, l)
-            # laplassian_method('dataset/test3.jpg',3, i, j, l)
-            # laplassian_method('dataset/test4.jpg',4, i, j, l)
-            # laplassian_method('dataset/test5.jpg',5, i, j, l)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
-
-laplassian_method('dataset/test1.jpg',1, 5, 3, [0.3,0.8])
+for i in stand:
+    for j in ker:
+        for l in lower:
+            laplassian_method('dataset/test1.jpg', 1, i, j, l)

@@ -212,12 +212,12 @@ def main(path, standard_deviation, kernel_size, bound_path):
 # main('dataset/test5.jpg',5, 5, 9)
 
 # main('dataset/test5.jpg',10, 5, 3)
-# main('dataset/test5.jpg',10, 5, 7)
+main('dataset/test5.jpg',10, 5, 7)
 # main('dataset/test5.jpg',10, 5, 9)
 
 # main('dataset/test5.jpg',200, 7, 3)
 # main('dataset/test5.jpg',200, 7, 7)
-main('dataset/test5.jpg',200, 7, 9)
+# main('dataset/test1.jpg',200, 7, 9)
 
 
 # Оператор Прюитт
