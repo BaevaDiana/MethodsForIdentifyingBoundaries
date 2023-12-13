@@ -73,3 +73,8 @@ lower = [[0.1, 0.7], [0.3, 0.8], [0.4, 0.9]]
 
 # Вызов функции для одного изображения с заданными параметрами
 laplassian_method('dataset/test1.jpg', 1, 5, 5, [0.1, 0.7])
+
+for i in stand:
+    for j in ker:
+        for l in lower:
+            laplassian_method('dataset/test1.jpg', 1, i, j, l)
